@@ -5,12 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
 
-  after_create :send_confirmation
+  #after_create :send_confirmation
 
-  private
+  #private
 
-  def send_confirmation
-    self.send_confirmation_instructions
-  end
+  #def send_confirmation
+  #  self.send_confirmation_instructions
+  #end
 
 end
