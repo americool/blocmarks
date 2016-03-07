@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'peaceful-mesa-61462.herokuapp.com'}
+  config.action_mailer.default_url_options = { host: 'floating-brook-16711.herokuapp.com'}
 
   config.action_mailer.delivery_method = :smtp
 
