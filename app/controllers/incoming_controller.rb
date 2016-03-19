@@ -38,8 +38,14 @@ class IncomingController < ApplicationController
     # Check if the topic is nil, if so, create and save a new topic
 
     # Now that you're sure you have a valid user and topic, build and save a new bookmark
-    
+
 
     # Assuming all went well.
+  end
+
+  private
+
+  def bookmark_params
+    params.require(:bookmark).permit(:url)
   end
 end
