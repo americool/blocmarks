@@ -19,19 +19,27 @@ class IncomingController < ApplicationController
       topic.user_id = @user.id
     end
     # Assign the url to a variable after retreiving it from params["body-plain"]
-    @bookmark = Bookmark.where(url: params["body-plain"]).first_or_create! do |bookmark|
-      bookmark.url = params["body-plain"]
-      bookmark.topic_id = @topic.id
+    @bookmark = @topic.bookmarks.build({:url => params[:"stripped-text"]})
+
+    if @bookmark.valid?
+      @bookmark.save!
+      head 200
+    else
+      head 400
     end
+
+    # @bookmark = Bookmark.where(url: params["body-plain"]).first_or_create! do |bookmark|
+    #   bookmark.url = params["body-plain"]
+    #   bookmark.topic_id = @topic.id
+    # end
 
     # Check if user is nil, if so, create and save a new user
 
     # Check if the topic is nil, if so, create and save a new topic
 
     # Now that you're sure you have a valid user and topic, build and save a new bookmark
-    @bookmark.save!
+    
 
     # Assuming all went well.
-    head 200
   end
 end
