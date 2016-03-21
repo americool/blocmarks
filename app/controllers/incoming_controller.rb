@@ -9,16 +9,23 @@ class IncomingController < ApplicationController
     # magic here.
 
     # Find the user by using params[:sender]
+    p params[:sender]
+    p params[:subject]
+    p params[:"stripped-text"]
+    p params[:"body-plain"]
+
     @user = User.where(email: params[:sender]).first_or_create! do |user|
       user.email = params[:sender]
-      user.password = 'temppassword'
+      #user.password = 'temppassword'
     end
     # Find the topic by using params[:subject]
+
     @topic = Topic.where(title: params[:subject]).first_or_create! do |topic|
       topic.title = params[:subject]
       topic.user_id = @user.id
     end
     # Assign the url to a variable after retreiving it from params["body-plain"]
+
     # @bookmark = Bookmark.where(url: params["body-plain"]).first_or_create! do |bookmark|
     #   bookmark.url = params["body-plain"]
     #   bookmark.topic_id = @topic.id
