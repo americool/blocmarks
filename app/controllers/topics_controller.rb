@@ -12,8 +12,10 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(topic_params)
+    @user = current_user
 
+    @topic = Topic.new(topic_params)
+    @topic.user_id = @user.id 
         if @topic.save
           flash[:notice] = "\"#{@topic.title}\" was deleted successfully."
           redirect_to action: :index
