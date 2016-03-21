@@ -1,7 +1,7 @@
 class IncomingController < ApplicationController
 
   # http://stackoverflow.com/questions/1177863/how-do-i-ignore-the-authenticity-token-for-specific-actions-in-rails
-  #skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
 
@@ -16,7 +16,7 @@ class IncomingController < ApplicationController
 
     @user = User.where(email: params[:sender]).first_or_create! do |user|
       user.email = params[:sender]
-      #user.password = 'temppassword'
+      user.password = 'temppassword'
     end
     # Find the topic by using params[:subject]
 
