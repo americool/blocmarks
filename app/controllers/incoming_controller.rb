@@ -9,6 +9,7 @@ class IncomingController < ApplicationController
     # magic here.
 
     # Find the user by using params[:sender]
+    p "Hello!"
     p params[:sender]
     p params[:subject]
     p params[:"stripped-text"]
