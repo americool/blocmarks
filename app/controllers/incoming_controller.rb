@@ -2,18 +2,18 @@ class IncomingController < ApplicationController
 
   # http://stackoverflow.com/questions/1177863/how-do-i-ignore-the-authenticity-token-for-specific-actions-in-rails
   skip_before_action :verify_authenticity_token, only: [:create]
-skip_before_action :authenticate_user!, only: [:create]
+  skip_before_action :authenticate_user!, only: [:create]
   def create
 
     # You put the message-splitting and business
     # magic here.
 
     # Find the user by using params[:sender]
-    logger.warn("Hello!")
-    logger.warn(:sender)
-    logger.warn(:subject)
-    logger.warn(:"stripped-text")
-    logger.warn(:"body-plain")
+    #logger.warn("Hello!")
+    #logger.warn(:sender)
+    #logger.warn(:subject)
+    #logger.warn(:"stripped-text")
+    #logger.warn(:"body-plain")
 
     @user = User.where(email: params[:sender]).first_or_create! do |user|
       user.email = params[:sender]
