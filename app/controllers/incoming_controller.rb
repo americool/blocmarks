@@ -9,11 +9,11 @@ class IncomingController < ApplicationController
     # magic here.
 
     # Find the user by using params[:sender]
-    p "Hello!"
-    p params[:sender]
-    p params[:subject]
-    p params[:"stripped-text"]
-    p params[:"body-plain"]
+    logger.warn("Hello!")
+    logger.warn(:sender)
+    logger.warn(:subject)
+    logger.warn(:"stripped-text")
+    logger.warn(:"body-plain")
 
     @user = User.where(email: params[:sender]).first_or_create! do |user|
       user.email = params[:sender]
