@@ -15,9 +15,9 @@ class TopicsController < ApplicationController
     @user = current_user
 
     @topic = Topic.new(topic_params)
-    @topic.user_id = @user.id 
+    @topic.user_id = @user.id
         if @topic.save
-          flash[:notice] = "\"#{@topic.title}\" was deleted successfully."
+          flash[:notice] = "\"#{@topic.title}\" was saved successfully."
           redirect_to action: :index
         else
           flash.now[:alert] = "Error creating topic. Please try again"
