@@ -11,7 +11,9 @@
              <%= link_to topic.title, topic %>
            </h4>
           <small>
-             <%= link_to "Delete Topic", topic, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this Topic?'} %>
+            <% if policy(topic).destroy? %>
+               <%= link_to "Delete Topic", topic, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this Topic?'} %>
+            <%end%>
            </small>
          </div>
        </div>
@@ -19,5 +21,8 @@
    </div>
    <div class="col-md-4">
  <!-- #9 -->
-     <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
+    <%if current_user.present? %>
+    <!-- unclear why I can't get this to work with policy  -->
+      <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
+    <%end%>
    </div>
